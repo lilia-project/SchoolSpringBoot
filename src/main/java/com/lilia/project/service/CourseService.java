@@ -44,7 +44,6 @@ public class CourseService {
 
     public Optional<Course> getRequireById(int courseId) {
         return courseRepo.findById(courseId);
-
     }
 
     public void deleteById(int courseId) {

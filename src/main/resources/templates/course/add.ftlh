@@ -16,7 +16,7 @@
 <#include "../menu.ftlh">
 <main>
     <h2>Create a New Course</h2>
-    <form action="/courses" method="post">
+    <form action="/courses/add" method="post">
         <label for="name">Course Name:</label>
         <input type="text" id="name" name="name" required>
         <button type="submit">Create</button>

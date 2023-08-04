@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>People</title>
+  <title>Students</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="tablestyles.css">
 
@@ -11,29 +11,37 @@
 
 <body>
 <header>
-  <h1>People</h1>
+  <h1>Students</h1>
 </header>
 
 <#include "../menu.ftlh">
 
 <body>
-  <table id="peopleTable">
+  <table id="studentTable">
     <thead>
-            <form action="/person/add">
+            <form action="/students/add">
                  <button type="submit">Add</button>
             </form>
 
     <tr>
       <th>ID</th>
+      <th>role</th>
       <th>lastName</th>
+      <th>firstName</th>
+      <th>phone</th>
+      <th>email</th>
       <th>Actions</th>
     </tr>
     </thead>
         <tbody>
-                <#list people as course>
+                <#list students as person>
                     <tr>
                       <td><a href="/person/${person.getId()}"><p>${person.getId()}</a></td>
+                      <td>${person.getRole()}</a></td>
                       <td>${person.getLastName()}</td>
+                      <td>${person.getFirstName()}</td>
+                      <td>${person.getPhone()}</td>
+                      <td>${person.getEmail()}</td>
                       <td>
                            <form action="/person/${person.getId()}">
                                 <button type="submit">Edit</button>

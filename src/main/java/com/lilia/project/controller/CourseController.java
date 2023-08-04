@@ -2,13 +2,13 @@ package com.lilia.project.controller;
 
 import com.lilia.project.entity.Course;
 import com.lilia.project.service.CourseService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -32,21 +32,21 @@ public class CourseController {
         return "course/course";
     }
 
-    @PostMapping("/courses")
-    public String addCourse(@RequestParam String name) {
+    @PostMapping("/courses/add")
+    public String addCourse(@Valid String name) {
         courseService.save(name);
         return "redirect:/courses";
+    }
+
+    @GetMapping("/courses/add")
+    public String returnAddCoursePage() {
+        return "course/add";
     }
 
     @GetMapping("/courses")
     public String allCourses(Model model) {
         model.addAttribute("courses", courseService.outputAll());
         return "course/courses";
-    }
-
-    @GetMapping("/courses/add")
-    public String returnAddCoursePage() {
-        return "course/add";
     }
 
     @GetMapping("/courses/delete/{id}")

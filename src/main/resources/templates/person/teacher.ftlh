@@ -14,12 +14,39 @@
 </header>
 <#include "../menu.ftlh">
 <main>
+    <td>
+           id=${person.getId()}
+           role=${person.getRole()}
+           lastname=${person.getLastName()}
+           firstname=${person.getFirstName()}
+           phone=${person.getPhone()}
+           email=${person.getEmail()}
+       </td>
     <h2>Edit Teacher</h2>
                     <form action="/edit/${person.getId()}" method="post">
-                            <label for="name">Teacher Name:</label>
+                            <label for="name">role:</label>
                             <input type="text" id="name" name="name" required>
                             <button type="submit">Edit</button>
-                        </form>
+                    </form>
+                    <form action="/edit/${person.getId()}" method="post">
+                            <label for="name">lastname:</label>
+                            <input type="text" id="name" name="name" required>
+                            <button type="submit">Edit</button>
+                    </form>
+                    <form action="/edit/${person.getId()}" method="post">
+                             <label for="name">firstname:</label>
+                             <input type="text" id="name" name="name" required>
+                             <button type="submit">Edit</button>
+                    </form>
+                    <form action="/edit/${person.getId()}" method="post">
+                             <label for="name">phone:</label>
+                             <input type="text" id="name" name="name" required>
+                             <button type="submit">Edit</button>
+                    </form> <form action="/edit/${person.getId()}" method="post">
+                             <label for="name"> email:</label>
+                             <input type="text" id="name" name="name" required>
+                             <button type="submit">Edit</button>
+                    </form>
 </main>
 <footer>
   <p>&copy; 2023 IT School. All rights reserved.</p>

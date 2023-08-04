@@ -16,9 +16,9 @@
 <#include "../menu.ftlh">
 <main>
     <h2>Create a New Person</h2>
-    <form action="/person" method="post">
-        <label for="name">Person Name:</label>
-        <input type="text" id="lastName" name="lastName" required>
+    <form action="/teachers/add" method="post">
+        <label for="name">Person lastname:</label>
+        <input type="text" id="name" name="lastName" required>
         <button type="submit">Create</button>
     </form>
 </main>

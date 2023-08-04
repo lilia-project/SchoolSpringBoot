@@ -1,6 +1,8 @@
 package com.lilia.project.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -10,24 +12,15 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Role role;
-
+    @NotBlank(message = "Name can not be Blank")
     private String lastName;
 
     private String firstName;
-
     private String phone;
-
+    @Email
     private String email;
-
-    private int courseId;
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "student_course",
-//            joinColumns = @JoinColumn(name = "student_id"),
-//            inverseJoinColumns = @JoinColumn(name = "course_id"))
-//    private Set<Course> courses = new HashSet<>();
 
     public Person() {
     }
@@ -45,7 +38,6 @@ public class Person {
                 "\n role = " + role +
                 "\n Last name = " + lastName +
                 "\n First name = " + firstName +
-                "\n courseId = " + courseId +
                 "\n Phone = " + phone +
                 "\n Email = " + email +
                 "\n }";

@@ -15,8 +15,7 @@
 <#include "../menu.ftlh">
     <main>
         <td>
-            id=${course.getId()}
-            courseName=${course.getName()}
+            ${course}
         </td>
         <h2>Edit Course</h2>
                <form action="/edit/${course.getId()}" method="post">

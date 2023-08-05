@@ -15,12 +15,7 @@
 <#include "../menu.ftlh">
 <main>
     <td>
-        id=${person.getId()}
-        role=${person.getRole()}
-        lastName=${person.getLastName()}
-        firstName=${person.getFirstName()}
-        phone=${person.getPhone()}
-        email=${person.getEmail()}
+       ${person}
     </td>
 
     <h2>Edit Student</h2>

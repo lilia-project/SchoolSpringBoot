@@ -33,13 +33,11 @@ public class Person {
 
     @Override
     public String toString() {
-        return "\n Person{" +
-                "\n id = " + id +
+        return "\n id = " + id +
                 "\n role = " + role +
                 "\n Last name = " + lastName +
                 "\n First name = " + firstName +
                 "\n Phone = " + phone +
-                "\n Email = " + email +
-                "\n }";
+                "\n Email = " + email;
     }
 }

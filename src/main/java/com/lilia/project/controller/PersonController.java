@@ -38,12 +38,23 @@ public class PersonController {
     @PostMapping("/teachers/add")
     public String addTeacher(@Valid String lastName) {
         personService.save(Role.TEACHER, lastName);
-        return "person/teachers";
+        return "redirect:/teachers";
+    }
+
+    @PostMapping("/students/add")
+    public String addStudent(@Valid String lastName) {
+        personService.save(Role.STUDENT, lastName);
+        return "redirect:/students";
     }
 
     @GetMapping("/teachers/add")
     public String returnAddTeacherPage() {
-        return "teacher/add";
+        return "person/add";
+    }
+
+    @GetMapping("/students/add")
+    public String returnAddStudentsPage() {
+        return "person/add";
     }
 
     @GetMapping("/teachers")

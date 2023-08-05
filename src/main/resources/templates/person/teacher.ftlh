@@ -15,12 +15,7 @@
 <#include "../menu.ftlh">
 <main>
     <td>
-           id=${person.getId()}
-           role=${person.getRole()}
-           lastname=${person.getLastName()}
-           firstname=${person.getFirstName()}
-           phone=${person.getPhone()}
-           email=${person.getEmail()}
+           ${person}
        </td>
     <h2>Edit Teacher</h2>
                     <form action="/edit/${person.getId()}" method="post">

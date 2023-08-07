@@ -16,7 +16,7 @@
 
 <main>
     <h2>Announcements</h2>
-    <p>Welcome to the Online School! This platform allows you to manage students, courses, teachers, and grades.
+    <p>Welcome to the Online School! This platform allows you to manage students, courses, teachers.
         Please navigate through the links above to access the different sections.</p>
 </main>
 

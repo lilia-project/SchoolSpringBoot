@@ -19,15 +19,24 @@ public class PersonService {
         this.personRepo = PersonRepo;
     }
 
-    public void save(String name) {
+    public void save(Role role, String lastName) {
         Person person = new Person();
-        person.setLastName(name);
+        person.setLastName(lastName);
+        person.setRole(role);
         personRepo.saveAndFlush(person);
     }
 
     public Optional<Person> getRequireById(int personId) {
         return personRepo.findById(personId);
     }
+
+    public List<Person> getRequireByRole(Role role) {
+        List<Person> people = personRepo.findAll();
+        return people.stream()
+                .filter(i -> i.getRole().equals(role))
+                .toList();
+    }
+
 
     public Role getRole(int choiceRole) {
         if (choiceRole == 1) {
@@ -45,7 +54,6 @@ public class PersonService {
         Person person = new Person();
         person.setLastName(lastName);
         personRepo.delete(person);
-
     }
 
 }

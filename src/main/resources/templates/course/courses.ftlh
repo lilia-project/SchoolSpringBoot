@@ -10,9 +10,9 @@
 </head>
 
 <body>
-<header>
-  <h1>Courses</h1>
-</header>
+    <header>
+        <h1>Courses</h1>
+    </header>
 
 <#include "../menu.ftlh">
 
@@ -22,7 +22,6 @@
             <form action="/courses/add">
                  <button type="submit">Add</button>
             </form>
-
     <tr>
       <th>ID</th>
       <th>Name</th>
@@ -30,21 +29,20 @@
     </tr>
     </thead>
         <tbody>
-                <#list courses as course>
-                    <tr>
-                      <td><a href="/course/${course.getId()}"><p>${course.getId()}</a></td>
-                      <td>${course.getName()}</td>
-                      <td>
+             <#list courses as course>
+                 <tr>
+                        <td><a href="/course/${course.getId()}"><p>${course.getId()}</a></td>
+                        <td>${course.getName()}</td>
+                        <td>
                            <form action="/course/${course.getId()}">
                                 <button type="submit">Edit</button>
                            </form>
-
                            <form action="/courses/delete/${course.getId()}" method="get">
                                 <button type="submit">Delete</button>
                            </form>
-                      </td>
-                    </tr>
-                </#list>
+                        </td>
+                 </tr>
+             </#list>
         </tbody>
   </table>
 

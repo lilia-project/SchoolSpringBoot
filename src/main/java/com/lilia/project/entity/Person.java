@@ -1,6 +1,8 @@
 package com.lilia.project.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -10,29 +12,20 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Enumerated
-    private Role role;
-
+    @Enumerated(EnumType.STRING)
+    private PersonRole role;
+    @NotBlank(message = "Name can not be Blank")
     private String lastName;
 
     private String firstName;
-
     private String phone;
-
+    @Email
     private String email;
-
-    private int courseId;
-
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "student_course",
-//            joinColumns = @JoinColumn(name = "student_id"),
-//            inverseJoinColumns = @JoinColumn(name = "course_id"))
-//    private Set<Course> courses = new HashSet<>();
 
     public Person() {
     }
 
-    public Person(final Integer id, final Role role, String lastName) {
+    public Person(final Integer id, final PersonRole role, String lastName) {
         this.id = id;
         this.role = role;
         this.lastName = lastName;
@@ -40,14 +33,11 @@ public class Person {
 
     @Override
     public String toString() {
-        return "\n Person{" +
-                "\n id = " + id +
+        return "\n id = " + id +
                 "\n role = " + role +
                 "\n Last name = " + lastName +
                 "\n First name = " + firstName +
-                "\n courseId = " + courseId +
                 "\n Phone = " + phone +
-                "\n Email = " + email +
-                "\n }";
+                "\n Email = " + email;
     }
 }

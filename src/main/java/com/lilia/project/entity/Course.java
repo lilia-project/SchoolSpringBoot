@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -16,6 +17,7 @@ public class Course {
 
     private String name;
 
+    @NotBlank(message = "Name can not be Blank")
     public Course() {
     }
 
@@ -28,7 +30,6 @@ public class Course {
     public String toString() {
         return " course id = " + id +
                 " course name = " + name
-//                " lectures = " + lectures
                 ;
     }
 }

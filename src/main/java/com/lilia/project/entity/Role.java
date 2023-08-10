@@ -1,16 +1,23 @@
 package com.lilia.project.entity;
 
-public enum Role {
-    TEACHER("TEACHER"),
-    STUDENT("STUDENT");
+import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
-    private final String field;
+@Entity
+@Data
+@Table(name = "role")
+public class Role implements GrantedAuthority {
 
-    Role(String field) {
-        this.field = field;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    public String getField() {
-        return field;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }

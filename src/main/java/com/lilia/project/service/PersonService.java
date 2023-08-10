@@ -2,7 +2,7 @@ package com.lilia.project.service;
 
 
 import com.lilia.project.entity.Person;
-import com.lilia.project.entity.Role;
+import com.lilia.project.entity.PersonRole;
 import com.lilia.project.repo.PersonRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +19,10 @@ public class PersonService {
         this.personRepo = PersonRepo;
     }
 
-    public void save(String name) {
+    public void save(PersonRole role, String lastName) {
         Person person = new Person();
-        person.setLastName(name);
+        person.setLastName(lastName);
+        person.setRole(role);
         personRepo.saveAndFlush(person);
     }
 
@@ -29,11 +30,19 @@ public class PersonService {
         return personRepo.findById(personId);
     }
 
-    public Role getRole(int choiceRole) {
+    public List<Person> getRequireByRole(PersonRole role) {
+        List<Person> people = personRepo.findAll();
+        return people.stream()
+                .filter(i -> i.getRole().equals(role))
+                .toList();
+    }
+
+
+    public PersonRole getRole(int choiceRole) {
         if (choiceRole == 1) {
-            return Role.TEACHER;
+            return PersonRole.TEACHER;
         } else {
-            return Role.STUDENT;
+            return PersonRole.STUDENT;
         }
     }
 
@@ -45,7 +54,6 @@ public class PersonService {
         Person person = new Person();
         person.setLastName(lastName);
         personRepo.delete(person);
-
     }
 
 }

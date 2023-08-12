@@ -5,18 +5,18 @@
     <script>
 
         function showMessage() {
-            var name = prompt("What is Programming?\n 1 - Programming is a process of writing programs using programming languages,\n 2 - It means to make sites,\n 3 - It means Web App creation");
+            let name = prompt("What is Programming?\n 1 - Programming is a process of writing programs using programming languages,\n 2 - It means to make sites,\n 3 - It means Web App creation");
             Number(name);
-            var result = 0;
+            let result = 0;
             if (name == 1) {
                 result++;
             }
-            var name = prompt("What is WEB App?\n 1 - It is a program on my computer\n 2 - It is a program in my smartphone\n 3 - It is a program in a web browser");
+            let name = prompt("What is WEB App?\n 1 - It is a program on my computer\n 2 - It is a program in my smartphone\n 3 - It is a program in a web browser");
             Number(name);
              if (name == 3) {
                 result++;
             }
-              var name = prompt("What is Desktop App?\n 1 - It is a program on my computer\n 2 - It is a program in my smartphone\n 3 - It is a program in a web browser");
+              let name = prompt("What is Desktop App?\n 1 - It is a program on my computer\n 2 - It is a program in my smartphone\n 3 - It is a program in a web browser");
             Number(name);
              if (name == 1) {
                 result++;

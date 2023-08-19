@@ -1,28 +1,78 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registration form</title>
+    <style>
+    .error {
+      color: red;
+    }
+
+    .small-font {
+      font-size: 80%;
+    }
+  </style>
+    <script>
+    function validateForm() {
+      let login = document.forms["myForm"]["login"].value;
+      let password = document.forms["myForm"]["password"].value;
+      let email = document.forms["myForm"]["email"].value;
+      let isValid = true;
+
+      if (login === "") {
+        document.getElementById("loginError").textContent = "Please input login";
+        isValid = false;
+      } else if (!/^[a-zA-Z][a-zA-Z0-9_]*$/.test(login)) {
+        document.getElementById("loginError").textContent = "Login must start with a letter and contain only letters, numbers, and underscores";
+        isValid = false;
+      } else {
+        document.getElementById("loginError").textContent = "";
+      }
+
+      if (password === "") {
+        document.getElementById("passwordError").textContent = "Please input password";
+        isValid = false;
+      } else if (!/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{4,15}$/.test(password)) {
+        document.getElementById("passwordError").textContent = "Password must be 4-15 characters long and contain at least one letter, one digit, and one special character";
+        isValid = false;
+      } else {
+        document.getElementById("passwordError").textContent = "";
+      }
+
+      if (email === "") {
+        document.getElementById("emailError").textContent = "Please input email";
+        isValid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById("emailError").textContent = "Invalid email format";
+        isValid = false;
+      } else {
+        document.getElementById("emailError").textContent = "";
+      }
+
+      return isValid;
+    }
+  </script>
 </head>
 <body>
+<h2>Registration</h2>
 
-<div class="form-row">
-    <div class="form-group col-md-6">
-        <form method="post" action="/registration" class="form-inline">
-            <input type="text" name="username" class="form-control" placeholder="username">
-            <input type="password" name="password" class="form-control" placeholder="user password">
-            <input type="email" name="email" class="form-control" placeholder="email">
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-            <button type="submit" class="btn btn-primary ml-2">Save</button>
-        </form>
-    </div>
-</div>
+<form name="myForm" onsubmit="return validateForm()" method="post">
 
+    <label for="login">Login:</label>
+    <input type="text" id="login" name="login"><br>
+    <label for="login" class="small-font">(login must start with a letter and contain only letters, numbers, and underscores)</label><br>
+    <span id="loginError" class="error"></span><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br>
+    <label for="password" class="small-font">(password must be 4-15 characters long and contain at least one letter, one digit, and one special character)</label><br>
+    <span id="passwordError" class="error"></span><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+    <span id="emailError" class="error"></span><br><br>
+
+    <input type="submit" value="Send">
+
+</form>
 </body>
 </html>
-
-
-

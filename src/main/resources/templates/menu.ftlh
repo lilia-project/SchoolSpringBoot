@@ -6,6 +6,7 @@
         <li><a href="/teachers">Teachers</a></li>
         <li><a href="/logout">Logout</a></li>
         <li><a href="/login">Login</a></li>
+        <li><a href="/registration">Registration</a></li>
         <li><a href="/tests">Test</a></li>
     </ul>
 </nav>

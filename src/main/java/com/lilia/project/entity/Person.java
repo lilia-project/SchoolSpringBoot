@@ -13,7 +13,7 @@ public class Person {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private PersonRole role;
     @NotBlank(message = "Name can not be Blank")
     private String lastName;
 
@@ -25,7 +25,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(final Integer id, final Role role, String lastName) {
+    public Person(final Integer id, final PersonRole role, String lastName) {
         this.id = id;
         this.role = role;
         this.lastName = lastName;

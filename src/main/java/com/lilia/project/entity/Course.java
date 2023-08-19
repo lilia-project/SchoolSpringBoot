@@ -14,9 +14,10 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotBlank(message = "Name can not be Blank")
+
     private String name;
 
+    @NotBlank(message = "Name can not be Blank")
     public Course() {
     }
 
@@ -28,6 +29,7 @@ public class Course {
     @Override
     public String toString() {
         return " course id = " + id +
-                " course name = " + name;
+                " course name = " + name
+                ;
     }
 }

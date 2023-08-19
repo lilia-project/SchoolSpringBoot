@@ -69,9 +69,4 @@ public class CourseController {
         return "redirect:/courses";
     }
 
-    @GetMapping("/index")
-    public String Home() {
-        return "redirect:/";
-    }
-
 }

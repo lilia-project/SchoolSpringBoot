@@ -1,7 +1,7 @@
 package com.lilia.project.controller;
 
 import com.lilia.project.entity.Person;
-import com.lilia.project.entity.Role;
+import com.lilia.project.entity.PersonRole;
 import com.lilia.project.service.PersonService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class PersonController {
         final Person person = personById.orElse(null);
         model.addAttribute("person", person);
         model.addAttribute("id", id);
-        if (person.getRole().equals(Role.TEACHER)) {
+        if (person.getRole().equals(PersonRole.TEACHER)) {
             return "person/teacher";
         } else
             return "person/student";
@@ -37,13 +37,13 @@ public class PersonController {
 
     @PostMapping("/teachers/add")
     public String addTeacher(@Valid String lastName) {
-        personService.save(Role.TEACHER, lastName);
+        personService.save(PersonRole.TEACHER, lastName);
         return "redirect:/teachers";
     }
 
     @PostMapping("/students/add")
     public String addStudent(@Valid String lastName) {
-        personService.save(Role.STUDENT, lastName);
+        personService.save(PersonRole.STUDENT, lastName);
         return "redirect:/students";
     }
 
@@ -59,15 +59,15 @@ public class PersonController {
 
     @GetMapping("/teachers")
     public String allTeachers(Model model) {
-        model.addAttribute("teachers", personService.getRequireByRole(Role.TEACHER));
-        model.addAttribute("role", Role.TEACHER);
+        model.addAttribute("teachers", personService.getRequireByRole(PersonRole.TEACHER));
+        model.addAttribute("role", PersonRole.TEACHER);
         return "person/teachers";
     }
 
     @GetMapping("/students")
     public String allStudent(Model model) {
-        model.addAttribute("students", personService.getRequireByRole(Role.STUDENT));
-        model.addAttribute("role", Role.STUDENT);
+        model.addAttribute("students", personService.getRequireByRole(PersonRole.STUDENT));
+        model.addAttribute("role", PersonRole.STUDENT);
         return "person/students";
     }
 
